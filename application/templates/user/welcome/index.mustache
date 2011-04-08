@@ -1,0 +1,11 @@
+<h1>{{username}}'s photos</h1>
+
+{{#photostream}}
+	<div class="photosream_photo">
+		<h3>{{title}}</h3>
+		<div style="width: 500px; height: 300px; border: 1px solid black;"></div>
+	</div>
+{{/photostream}}
+{{^photostream}}
+	<p>No photos, upload some.</p>
+{{/photostream}}

@@ -1,0 +1,42 @@
+<html>
+<head>
+<style>
+body {
+	padding: 0px;
+	margin: 0px;
+	font-family: arial;
+}
+
+#content {
+	margin-left: 40px;
+}
+
+#footer {
+	margin-top: 40px;
+}
+
+</style>
+</head>
+<body>
+
+<div style="color: white; background: black; height: 20px; padding: 3px;">
+	varnish beta
+	<span style="float: right;">
+	{{#visitor}}
+		<a href="/login?logout=1">logout</a>
+	{{/visitor}}
+	{{^visitor}}
+		<a href="/login">login</a>
+	{{/visitor}}
+	</span>
+</div>
+
+<div id="content">
+{{>content}}
+</div>
+
+<div id="footer">
+</div>
+
+</body>
+</html>

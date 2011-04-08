@@ -1,0 +1,6 @@
+ * check php install (zie install.php)
+ * schrijfrechten op cache dirs
+ * database info
+ * database schema laden
+ * verander de hash key in application/config/auth
+ * cookie salt?

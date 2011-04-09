@@ -1,0 +1,31 @@
+<h1>Upload</h1>
+
+<link href="/media/uploadify/uploadify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="/media/uploadify/swfobject.js"></script>
+<script type="text/javascript" src="/media/uploadify/jquery.uploadify.v2.1.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#file_upload').uploadify({
+    'uploader'  : '/media/uploadify/uploadify.swf',
+    'script'    : '/media/uploadify/uploadify.php',
+    'cancelImg' : '/media/uploadify/cancel.png',
+    'folder'    : '/uploads',
+    'auto'      : false,
+	'multi'		: true
+  });
+
+  $('#start_upload').click(function () {
+  	$('#file_upload').uploadifyUpload();
+  });
+});
+</script>
+
+<p>Use CTRL+Click or Shift+Click to select multiple files.</p>
+
+<p>
+	<form>
+		<input id="file_upload" name="file_upload" type="file" />
+	</form>
+
+	<span id="start_upload">Start upload</span>
+</p>

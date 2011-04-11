@@ -1,3 +1,4 @@
 
  * auth framework in default controller maken
  * encrypt session id in upload page?
+ * flash messages

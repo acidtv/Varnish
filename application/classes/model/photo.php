@@ -55,7 +55,7 @@ class Model_Photo extends ORM {
 
 		$values = array(
 			'user_id' => $this->_user_id,
-			'filename' => $filename,
+			'filename' => basename($filename),
 			'title' => $title,
 			'description' => $description,
 			);

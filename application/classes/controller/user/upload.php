@@ -2,6 +2,10 @@
 
 class Controller_User_Upload extends Controller_User_Default {
 
+	protected $auth_required = 'login';
+
+	protected $_own_page_required = TRUE;
+
 	public function before()
 	{
 		if ($this->request->action() == 'receive')

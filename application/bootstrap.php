@@ -139,6 +139,12 @@ Route::set('signup', 'signup')
 		'controller' => 'signup',
 		'action'     => 'index',
 	));
+Route::set('uploads', 'uploads/<size>/<filename>', array('size' => '', 'filename' => '.*\.(jpg|gif|png)'))
+	->defaults(array(
+		'controller' => 'uploads',
+		'action'     => 'index',
+	));
+
 
 
 Route::set('error', 'error/<action>(/<message>)', array('action' => '[0-9]++', 'message' => '.+'))

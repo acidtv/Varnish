@@ -13,6 +13,11 @@ class Controller_User_Default extends Controller_Default {
 	protected $_own_page = FALSE;
 
 	/**
+	 * If set to TRUE, requires that this is $_visitor's own page
+	 */
+	protected $_own_page_required = FALSE;
+
+	/**
 	 * Does some stuff before loading any of the user specific pages
 	 */
 	public function before()
@@ -37,6 +42,12 @@ class Controller_User_Default extends Controller_Default {
 		if (is_object($this->_visitor) AND $this->_visitor->id == $this->_page_owner->id)
 		{
 			$this->_own_page = TRUE;
+		}
+
+		// Check if this page is only accessible to the page owner
+		if ($this->_own_page_required AND ! $this->_own_page)
+		{
+			throw new Exception('Access denied');
 		}
 	}
 	

@@ -1,6 +1,6 @@
 <?
 
-class View_User_Welcome_Index extends Kostache_Layout {
+class View_User_Welcome_Index extends View_Default {
  
  	public function username()
 	{

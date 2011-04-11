@@ -7,11 +7,17 @@
 $(document).ready(function() {
   $('#file_upload').uploadify({
     'uploader'  : '/media/uploadify/uploadify.swf',
-    'script'    : '/media/uploadify/uploadify.php',
+    'script'    : window.location.pathname+'/receive',
     'cancelImg' : '/media/uploadify/cancel.png',
     'folder'    : '/uploads',
     'auto'      : false,
-	'multi'		: true
+	'multi'		: true,
+	'sizeLimit' : {{size_limit_bytes}},
+	'simUploadLimit': 1,
+	'removeCompleted': false,
+	'fileExt': '{{allowed_extensions}}',
+	'fileDesc': '{{allowed_extensions}}',
+	'scriptData': {'session_id': '{{session_id}}' }
   });
 
   $('#start_upload').click(function () {
@@ -20,7 +26,7 @@ $(document).ready(function() {
 });
 </script>
 
-<p>Use CTRL+Click or Shift+Click to select multiple files.</p>
+<p>Use CTRL+Click or Shift+Click to select multiple files. The maximum file upload size is {{size_limit}} per file.</p>
 
 <p>
 	<form>

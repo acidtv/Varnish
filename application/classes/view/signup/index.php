@@ -1,6 +1,6 @@
 <?
 
-class View_Signup_Index extends Kostache_Layout {
+class View_Signup_Index extends View_Default {
  
 }
 

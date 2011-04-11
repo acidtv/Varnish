@@ -108,7 +108,8 @@ Kohana::modules(array(
 	'auth'       => MODPATH.'auth',       // Basic authentication
 	'database'   => MODPATH.'database',   // Database access
 	'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-	'kostache'   => MODPATH.'KOstache',  // Kohana Mustache (Logicless Templates) Implementation
+	'kostache'   => MODPATH.'KOstache',   // Kohana Mustache (Logicless Templates) Implementation
+	'flash'   	 => MODPATH.'flash',  	  // Flash notification module
 	));
 
 // Set the cookie salt
@@ -147,7 +148,7 @@ Route::set('error', 'error/<action>(/<message>)', array('action' => '[0-9]++', '
 	));
 
 // User route must come last
-Route::set('user', '<user>(/<controller>(/<id>))', array('user' => '[a-zA-Z0-9_\-\.]+'))
+Route::set('user', '<user>(/<controller>(/<action>(/<id>)))', array('user' => '[a-zA-Z0-9_\-\.]+'))
 	->defaults(array(
 		'controller' => 'welcome',
 		'action'     => 'index',

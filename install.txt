@@ -1,5 +1,5 @@
  * check php install (zie install.php)
- * schrijfrechten op cache dirs
+ * schrijfrechten op cache dirs en upload dir
  * database info
  * database schema laden
  * verander de hash key in application/config/auth

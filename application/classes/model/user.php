@@ -2,6 +2,10 @@
 
 class Model_User extends Model_Auth_User {
  
+ 	protected $_has_many = array(
+		'photos' => array(),
+	);
+
 	/**
 	 * Return new user object by username
 	 */
@@ -17,7 +21,9 @@ class Model_User extends Model_Auth_User {
 	 */
 	public function get_photostream()
 	{
-		return ORM::factory('photo')->get_photostream($this->id);
+		return ORM::factory('photo')
+			->set_user_id($this->id)
+			->get_photostream();
 	}
 
 	/**

@@ -14,19 +14,31 @@ body {
 #footer {
 	margin-top: 40px;
 }
-
 </style>
+
+{{#scripts}}
+    <script type="text/javascript" src="{{.}}"></script> 
+{{/scripts}}
+
+{{#styles}}
+    <link type="text/css" href="{{file}}" rel="stylesheet" media="{{media}}" /> 
+{{/styles}}
+
 </head>
 <body>
+
+{{#flash}}
+	{{flash}}
+{{/flash}}
 
 <div style="color: white; background: black; height: 20px; padding: 3px;">
 	varnish beta
 	<span style="float: right;">
 	{{#visitor}}
-		<a href="/login?logout=1">logout</a>
+		<a style="color: white;" href="/login?logout=1">logout</a>
 	{{/visitor}}
 	{{^visitor}}
-		<a href="/login">login</a>
+		<a style="color: white;" href="/login">login</a>
 	{{/visitor}}
 	</span>
 </div>

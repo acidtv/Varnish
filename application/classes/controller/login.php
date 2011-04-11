@@ -8,6 +8,7 @@ class Controller_Login extends Controller_Default {
 		if (Arr::get($_GET, 'logout'))
 		{
 			Auth::instance()->logout();
+			Flash::factory()->add('You have been logged out.');
 			$this->request->redirect('/');
 		}
 
@@ -27,6 +28,7 @@ class Controller_Login extends Controller_Default {
  
 			if ($status)
 			{		
+				Flash::factory()->add('You have been logged in.');
 				$this->request->redirect('/');
 			}
 			else

@@ -5,12 +5,12 @@ class Controller_User_Default extends Controller_Default {
 	/**
 	 * Contains the user object that belongs to the page being viewed
 	 */
-	var $_page_owner = null;
+	protected $_page_owner = null;
 
 	/**
 	 * TRUE if current page is the user's own page
 	 */
-	var $_own_page = FALSE;
+	protected $_own_page = FALSE;
 
 	/**
 	 * Does some stuff before loading any of the user specific pages
@@ -45,6 +45,7 @@ class Controller_User_Default extends Controller_Default {
 		// Render template
 		if (is_object($this->_view))
 		{
+			$this->_view->set('own_page', $this->_own_page);
 			$this->_view->set('page_owner', $this->_page_owner);
 		}
 

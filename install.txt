@@ -4,3 +4,4 @@
  * database schema laden
  * verander de hash key in application/config/auth
  * cookie salt?
+ * vertellen waar php max upload size (in .htaccess) aangepast kan worden en dat het van apache moet mogen om aan te passen

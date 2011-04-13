@@ -37,7 +37,7 @@ class Controller_User_Upload extends Controller_User_Default {
 		$this->auto_render = FALSE;
 
 		// Save move temp. file to upload dir
-		if (array_key_exists('Filedata', $_FILES) AND $file = Upload::save(Arr::get($_FILES,'Filedata')))
+		if (array_key_exists('Filedata', $_FILES) AND $file = Upload::save(Arr::get($_FILES,'Filedata'), null, 'uploads/original'))
 		{
 			// Add to user
 			ORM::factory('photo')

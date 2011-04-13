@@ -11,6 +11,14 @@ class Model_Photo extends ORM {
 		'user' => array(),
 	);
  
+ 	public static function get_by_filename($filename)
+	{
+		$photos = ORM::factory('photo')->where('filename', '=', $filename)
+			->find_all()->as_array();
+
+		return Arr::get($photos, 0);
+	}
+
  	/**
 	 * Set the user_id filter
 	 */
@@ -58,6 +66,7 @@ class Model_Photo extends ORM {
 			'filename' => basename($filename),
 			'title' => $title,
 			'description' => $description,
+			'upload_date' => date('c'),
 			);
 
 		$this->values($values);
@@ -65,5 +74,6 @@ class Model_Photo extends ORM {
 
 		return $this;
 	}
+
 }
 

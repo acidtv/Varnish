@@ -119,33 +119,12 @@ Cookie::$salt = '4326542rejwjigf83h8g9f89';
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-Route::set('default', '')
-	->defaults(array(
-		'controller' => 'welcome',
-		'action'     => 'index',
-	));
-Route::set('about', 'about(/<action>(/<id>))')
-	->defaults(array(
-		'controller' => 'about',
-		'action'     => 'index',
-	));
-Route::set('login', 'login')
-	->defaults(array(
-		'controller' => 'login',
-		'action'     => 'index',
-	));
-Route::set('signup', 'signup')
-	->defaults(array(
-		'controller' => 'signup',
-		'action'     => 'index',
-	));
-Route::set('uploads', 'uploads/<size>/<filename>', array('size' => '', 'filename' => '.*\.(jpg|gif|png)'))
-	->defaults(array(
-		'controller' => 'uploads',
-		'action'     => 'index',
-	));
 
+Route::set('simple_pages', '(<controller>)', array('controller' => '(signup|about|login)'))
+	->defaults(array('controller' => 'welcome'));
 
+Route::set('uploads', 'uploads/<size>/<filename>', array('size' => '[0-9a-z]+', 'filename' => '.+\.(jpg|png|gif)'))
+	->defaults(array('controller' => 'uploads'));
 
 Route::set('error', 'error/<action>(/<message>)', array('action' => '[0-9]++', 'message' => '.+'))
 	->defaults(array(
@@ -157,7 +136,6 @@ Route::set('error', 'error/<action>(/<message>)', array('action' => '[0-9]++', '
 Route::set('user', '<user>(/<controller>(/<action>(/<id>)))', array('user' => '[a-zA-Z0-9_\-\.]+'))
 	->defaults(array(
 		'controller' => 'welcome',
-		'action'     => 'index',
 		'directory'	 => 'user',
 	));
 

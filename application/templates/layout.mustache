@@ -1,25 +1,20 @@
 <html>
 <head>
 <style>
-body {
-	padding: 0px;
-	margin: 0px;
-	font-family: arial;
-}
 
-#content {
-	margin-left: 40px;
+#user_header * {
+	color: white;
 }
-
-#footer {
-	margin-top: 40px;
-}
+	
 </style>
 
 {{#scripts}}
     <script type="text/javascript" src="{{.}}"></script> 
 {{/scripts}}
 
+    <link type="text/css" href="/media/css/reset.css" rel="stylesheet" media="screen" /> 
+    <link type="text/css" href="/media/css/text.css" rel="stylesheet" media="screen" /> 
+    <link type="text/css" href="/media/css/960.css" rel="stylesheet" media="screen" /> 
 {{#styles}}
     <link type="text/css" href="{{file}}" rel="stylesheet" media="{{media}}" /> 
 {{/styles}}
@@ -31,19 +26,7 @@ body {
 	{{flash}}
 {{/flash}}
 
-<div style="color: white; background: black; height: 20px; padding: 3px;">
-	varnish beta
-	<span style="float: right;">
-	{{#visitor}}
-		<a style="color: white;" href="/login?logout=1">logout</a>
-	{{/visitor}}
-	{{^visitor}}
-		<a style="color: white;" href="/login">login</a>
-	{{/visitor}}
-	</span>
-</div>
-
-<div id="content">
+<div id="content" class="container_12">
 {{>content}}
 </div>
 

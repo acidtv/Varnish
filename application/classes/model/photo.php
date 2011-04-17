@@ -7,10 +7,28 @@ class Model_Photo extends ORM {
 	 */
 	protected $_user_id = NULL;
 
+	/**
+	 * Sizes config
+	 */
+	protected $_sizes = array();
+	
+	/**
+	 * Relations
+	 */
 	protected $_belongs_to = array(
 		'user' => array(),
 	);
  
+ 	public function __construct($id = NULL)
+	{
+		parent::__construct($id);
+
+		$this->_sizes = Kohana::config('app.photo_sizes');
+	}
+
+ 	/**
+	 * Return photo object by filename
+	 */
  	public static function get_by_filename($filename)
 	{
 		$photos = ORM::factory('photo')->where('filename', '=', $filename)
@@ -29,6 +47,9 @@ class Model_Photo extends ORM {
 		return $this;
 	}
 
+	/**
+	 * Check if a user_id was set
+	 */
 	private function check_user_id()
 	{
 		if ( ! $this->_user_id)
@@ -71,8 +92,62 @@ class Model_Photo extends ORM {
 
 		$this->values($values);
 		$this->save();
+		$this->resize_presets();
 
 		return $this;
+	}
+
+	/**
+	 * Resize photo for all preset sizes
+	 */
+	public function resize_presets()
+	{
+		if ( ! $this->loaded())
+			return false;
+
+		foreach ($this->_sizes as $name => $size)
+		{
+			$this->resize($size, $name);
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Resize to specific size
+	 */
+	private function resize(array $size, $name)
+	{
+		if ( ! $this->loaded())
+			return false;
+
+		// Check if destination dir exists, if not, create it
+		$dir = dirname($this->get_full_path($name));
+		if ( ! is_dir($dir))
+		{
+			if ( ! mkdir($dir))
+				throw new Exception('Unable to create '.$dir.', check permissions.');
+		}
+
+		// Resize and save image
+		$image = Image::factory($this->get_full_path());
+		$image->resize($size[0], $size[1])
+			->save($this->get_full_path($name));
+
+		return $this;
+	}
+
+	/**
+	 * Return full path on the filesystem from the original version
+	 */
+	public function get_full_path($version = 'original')
+	{
+		if ( ! $this->loaded())
+			return false;
+
+		$path = DOCROOT.Kohana::config('app.photo_path').'/'.$version.'/'.$this->filename;
+
+		return $path;
 	}
 
 }

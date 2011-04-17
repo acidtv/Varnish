@@ -1,6 +1,6 @@
 <?
 
-class View_User_Welcome_Index extends View_Default {
+class View_User_Welcome_Index extends View_User_Default {
  
  	public function username()
 	{
@@ -14,9 +14,11 @@ class View_User_Welcome_Index extends View_Default {
 		foreach ($photos as &$photo)
 		{
 			$photo = $photo->as_array();
+			$photo['url'] = $this->request->uri(array('controller' => 'photos', 'id' => $photo['id']));
 		}
 
 		return $photos;
 	}
+
 }
 

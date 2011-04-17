@@ -1,0 +1,31 @@
+
+<div id="user_header" class="grid_12" style="height: 100px; background-image: url('/media/swoosh.jpg');">
+
+	<div class="grid_10"><h1 style="margin-bottom: 10px; color: white; font-size: 40px; font-weigth: bold; ">Title</h1></div>
+
+	<div class="grid_1" style="text-align: right; font-size: 12px;">
+	{{#visitor}}
+		<a style="color: white;" href="/login?logout=1">logout</a>
+	{{/visitor}}
+	{{^visitor}}
+		<a style="color: white;" href="/login">login</a>
+	{{/visitor}}
+	</div>
+
+	<div class="clear"></div>
+
+	{{#own_page}}
+		<div style="background-color: rgba(0,0,0,0.5); font-size: 12px; padding: 4px; color: white;">
+			<a href="{{uri.dashboard}}">Dashboard</a> | 
+			Sets | 
+			About | 
+			<a href="{{uri.upload}}">Upload</a>
+		</div>
+	{{/own_page}}
+
+</div>
+<div class="clear"></div>
+
+<div class="grid_12" style="padding-top: 15px;">
+{{>content_user}}
+</div>

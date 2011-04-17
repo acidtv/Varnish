@@ -81,6 +81,8 @@ class Controller_Default extends Controller {
 			$this->_scripts[] = '/media/js/jquery.min.js';
 			$this->_styles[] = array('file' => '/media/css/default.css', 'media' => 'screen');
 
+			$this->_view->set('request', $this->request);
+
 			$this->_view->set('scripts', $this->_scripts);
 			$this->_view->set('styles', $this->_styles);
 			$this->_view->set('visitor', $this->_visitor);

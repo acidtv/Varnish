@@ -102,13 +102,13 @@ Kohana::$config->attach(new Config_File);
 Kohana::modules(array(
 	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
 	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-	// 'image'      => MODPATH.'image',      // Image manipulation
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 	'auth'       => MODPATH.'auth',       // Basic authentication
 	'database'   => MODPATH.'database',   // Database access
 	'orm'        => MODPATH.'orm',        // Object Relationship Mapping
 	'kostache'   => MODPATH.'KOstache',   // Kohana Mustache (Logicless Templates) Implementation
+	'image'      => MODPATH.'image',      // Image manipulation
 	'flash'   	 => MODPATH.'flash',  	  // Flash notification module
 	));
 
@@ -133,7 +133,12 @@ Route::set('error', 'error/<action>(/<message>)', array('action' => '[0-9]++', '
 	));
 
 // User route must come last
-Route::set('user', '<user>(/<controller>(/<action>(/<id>)))', array('user' => '[a-zA-Z0-9_\-\.]+'))
+Route::set('user', '<user>(/<controller>(/<action>)(/<id>))', 
+	array(
+		'user' => '[a-zA-Z0-9_\-\.]+', 
+		'action' => '[a-z_]+',
+		'id' => '[0-9]+',
+	))
 	->defaults(array(
 		'controller' => 'welcome',
 		'directory'	 => 'user',

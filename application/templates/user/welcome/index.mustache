@@ -1,19 +1,13 @@
-<h1>{{username}}'s photos</h1>
-
-{{#own_page}}
-	<div>
-		Dashboard | 
-		Sets | 
-		Profile | 
-		Contacts
-	</div>
-{{/own_page}}
 
 {{#photostream}}
-	<div class="photosream_photo">
-		<h3>{{title}}</h3>
-		<img src="/uploads/original/{{filename}}" style="width: 500px;" />
-	</div>
+		<div class="grid_8 photostream_photo">
+			<a href="{{url}}"><img src="/uploads/large/{{filename}}" /></a>
+		</div>
+		<div class="grid_3">
+			<h2>image</h2>
+			<p>story</p>
+		</div>
+		<div  style="float:left; margin-bottom: 30px;"></div>
 {{/photostream}}
 {{^photostream}}
 	<p>No photos, upload some.</p>
